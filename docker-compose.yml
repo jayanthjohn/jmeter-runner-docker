@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  github-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: github-runner
+    volumes:
+      - .:/workspace
+    environment:
+      GITHUB_URL: ""           # Fill in or leave empty for interactive
+      GITHUB_TOKEN: ""         # Fill in or leave empty for interactive
+      RUNNER_NAME: "local-runner"
+    tty: true
+    stdin_open: true
